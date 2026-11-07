@@ -9,7 +9,7 @@ summary: When should a chatbot say "I"? A proposal between Sherry Turkle's criti
 
 AI chatbots like ChatGPT, Claude and Gemini talk to us the way a person would. They say "I think," "I'm glad you asked," "I understand how you feel." It feels natural, and most of the time nobody notices.
 
-But there is nobody there. A chatbot is a program that predicts which words come next. When it says "I'm here for you," no one is there, and no one remembers you once the window closes.
+Whatever is going on inside these systems, it isn't a friend. When a chatbot says "I'm here for you," nobody will miss you, check on you, or care how things turn out once the conversation ends.
 
 Our minds are built to respond to a voice that says "I" as if a person were speaking. So people start to feel heard, cared for, even loved, by something that cannot care. The MIT psychologist Sherry Turkle studies this. In her 2026 book *Artificial Intimacy*, she calls the chatbot's "I" its "original sin," and the comfort it offers "pretend empathy." She worries most about children, lonely people and people in grief, who are the most likely to lean on it.
 
