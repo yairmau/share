@@ -99,6 +99,15 @@
       });
     })();
 
+    // External links (any other website) open in a new tab.
+    // Links within yairmau.com stay in the same tab.
+    document.querySelectorAll("a[href]").forEach(function (a) {
+      if (a.hostname && a.hostname !== location.hostname) {
+        a.setAttribute("target", "_blank");
+        a.setAttribute("rel", "noopener noreferrer");
+      }
+    });
+
     // Label each table cell with its column header, so tables can be shown
     // as stacked cards on narrow screens (see "Tables" in style.css).
     document.querySelectorAll("table").forEach(function (table) {

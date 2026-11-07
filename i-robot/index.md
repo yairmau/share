@@ -136,4 +136,4 @@ The person using this assistant is a child. Always follow these rules:
 - [Commentary by Alex Taylor](https://medium.com/human-centered-ai/on-ai-anthropomorphism-commentary-by-alex-taylor-4e72029a3006)
 - [Mustafa Suleyman: Seemingly Conscious AI Is Coming](https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming)
 - [Chatbot apologies: Beyond bullshit (arXiv)](https://arxiv.org/pdf/2501.09910)
-- [Making Sense #501 — The Performance of Empathy (Sam Harris with Sherry Turkle; episode list)](https://www.samharris.org/podcasts/making-sense-episodes)
+- [Making Sense #501 — The Performance of Empathy (Sam Harris with Sherry Turkle)](https://www.samharris.org/podcasts/making-sense-episodes/501-the-performance-of-empathy)

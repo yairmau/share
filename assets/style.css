@@ -232,6 +232,8 @@ button.copy:hover { border-color: var(--accent); color: var(--accent); }
 .intro { color: var(--muted); margin-bottom: 2rem; }
 .items { list-style: none; padding: 0; margin: 0; }
 .items li {
+  position: relative;
+  cursor: pointer;
   margin: 0 0 1rem;
   padding: 1.1rem 1.2rem;
   border: 1px solid var(--card-border);
@@ -245,7 +247,11 @@ button.copy:hover { border-color: var(--accent); color: var(--accent); }
   text-decoration: none;
   color: var(--head);
 }
-.items a.title:hover { color: var(--accent); }
+.items a.title:hover, .items li:hover a.title { color: var(--accent); }
+/* The title link stretches over the whole card, so tapping anywhere opens it. */
+.items a.title::after { content: ""; position: absolute; inset: 0; border-radius: 12px; }
+.items a.title:focus-visible { outline: none; }
+.items a.title:focus-visible::after { outline: 2px solid var(--accent); outline-offset: 2px; }
 .items .date {
   display: block;
   font-size: 0.85rem;

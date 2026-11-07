@@ -42,6 +42,8 @@ This repo is the source for **yairmau.com/share**: Yair Mau's pages for friends 
 ## Conventions
 
 - Keep the site simple: no themes, plugins, or JavaScript frameworks. GitHub Pages only supports its own whitelisted Jekyll plugins.
+- **External links open in a new tab.** The layout's script does this automatically for every link to another website, so write plain Markdown links (`[text](https://…)`). Never add `target` attributes by hand, and don't remove that script. Links within yairmau.com stay in the same tab.
+- On the landing page, each entry's whole card is clickable (the title link is stretched over the card in `style.css`). Keep one link per card; a second link inside a card would be covered.
 - Links inside the site use `{{ '/path/' | relative_url }}` so the `/share` prefix is kept.
 - Don't edit the layout or styles unless asked. New pages should look like the existing ones.
 - Jekyll may not be installable locally. If you can't build, check the Markdown and front matter carefully, and tell Yair the page is unverified until he sees it live.
