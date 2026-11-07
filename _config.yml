@@ -13,6 +13,7 @@ kramdown:
 
 exclude:
   - README.md
+  - CLAUDE.md
 
 defaults:
   - scope:
