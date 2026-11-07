@@ -27,7 +27,7 @@ Two running examples show what each level means in practice:
 - **Data analysis:** a year of soil-moisture readings from 12 field plots under two irrigation treatments, to be cleaned, analyzed and turned into figures.
 - **Writing:** a three-year grant proposal with a strict page limit and a set of required sections.
 
-## 🧠 Level 1: Give the AI a folder
+## Level 1: Give the AI a folder
 
 <img src="{{ '/five-levels-ai-agents/level-1-brain.jpg' | relative_url }}" alt="Level 1 glowing brain" style="width: 180px; height: auto;">
 
@@ -55,7 +55,7 @@ documentation first, since these apps change often. Finally, suggest a first
 small task I could try with my own files.
 ```
 
-## 🧠✨ Level 2: Work in VS Code
+## Level 2: Work in VS Code
 
 <img src="{{ '/five-levels-ai-agents/level-2-brain.jpg' | relative_url }}" alt="Level 2 glowing brain" style="width: 180px; height: auto;">
 
@@ -83,7 +83,7 @@ panel. I've never used git, so explain it in plain terms. If you can search
 the web, check the current documentation first.
 ```
 
-## 🌟 Level 3: Standing rules
+## Level 3: Standing rules
 
 <img src="{{ '/five-levels-ai-agents/level-3-brain.jpg' | relative_url }}" alt="Level 3 glowing brain" style="width: 180px; height: auto;">
 
@@ -128,7 +128,7 @@ to run things, conventions, and things to never do. Use concrete rules you can
 check yourself against, not vague ones. Explain each part as you write it.
 ```
 
-## 🌌 Level 4: Procedures and skills
+## Level 4: Procedures and skills
 
 <img src="{{ '/five-levels-ai-agents/level-4-brain.jpg' | relative_url }}" alt="Level 4 glowing brain" style="width: 180px; height: auto;">
 
@@ -189,13 +189,13 @@ would be worth turning a procedure into a skill. If you can search the web,
 check your tool's current documentation on skills first.
 ```
 
-## 🌌🌌 Level 5a: Sync copies across machines
+## Level 5a: Sync copies across machines
 
 <img src="{{ '/five-levels-ai-agents/level-5-brain.jpg' | relative_url }}" alt="Level 5 glowing brain" style="width: 180px; height: auto;">
 
 Level 5 has two versions that solve the same problem: keep synced copies on each computer (5a), or keep a single copy on a server (5b). Pick one.
 
-**The problem.** You work on the lab desktop, then on your laptop at home. The files may follow you, but the agent's session history stays on the first machine, so the second agent doesn't know what was decided yesterday. You become the memory between them.
+**The problem.** You work on the lab desktop, then on your laptop at home. If the project is already synced through GitHub, Dropbox or Google Drive, the files follow you, but the agent's session history stays on the first machine, so the second agent doesn't know what was decided yesterday. You become the memory between them.
 
 **What you add.**
 
@@ -227,7 +227,7 @@ session and update it at the end with what was done, decisions made, and next
 steps. Ask me where my large data lives.
 ```
 
-## 🌌🌌 Level 5b: One copy on a server
+## Level 5b: One copy on a server
 
 **The problem.** Option 5a still leaves several copies of the project to keep in sync, and large datasets often already live on the university's computing cluster rather than on your laptop.
 
