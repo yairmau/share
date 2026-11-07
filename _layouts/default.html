@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }} · {{ site.author }}</title>
+  <meta name="description" content="{{ page.summary | default: site.description | escape }}">
+  {% if site.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ page.summary | default: site.description | escape }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="https://yairmau.com/">Yair Mau</a>
+    <span class="sep">/</span>
+    <a class="site-section" href="{{ '/' | relative_url }}">share</a>
+  </header>
+
+  <main>
+    {% if page.title and page.url != "/" %}
+    <article>
+      <h1>{{ page.title }}</h1>
+      {% if page.date %}<p class="meta">{{ page.date | date: "%-d %B %Y" }}</p>{% endif %}
+      {{ content }}
+    </article>
+    {% else %}
+    {{ content }}
+    {% endif %}
+  </main>
+
+  <footer class="site-footer">
+    <a href="{{ '/' | relative_url }}">All shared pages</a> · <a href="https://yairmau.com/">yairmau.com</a>
+  </footer>
+
+  <script>
+    // Add a copy button to every code block.
+    document.querySelectorAll("pre").forEach(function (pre) {
+      var btn = document.createElement("button");
+      btn.className = "copy";
+      btn.type = "button";
+      btn.textContent = "Copy";
+      btn.addEventListener("click", function () {
+        var code = pre.querySelector("code") || pre;
+        navigator.clipboard.writeText(code.innerText).then(function () {
+          btn.textContent = "Copied";
+          setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
+  </script>
+</body>
+</html>

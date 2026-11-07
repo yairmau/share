@@ -1,0 +1,21 @@
+title: Share
+description: Things Yair Mau wants to share with friends and family.
+author: Yair Mau
+url: https://yairmau.com
+baseurl: /share
+
+# Ask search engines not to index these pages. Set to false to allow indexing.
+noindex: true
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

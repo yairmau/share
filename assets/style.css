@@ -1,0 +1,160 @@
+:root {
+  --text: #1f2328;
+  --muted: #6a737d;
+  --bg: #fdfcfa;
+  --rule: #e6e2da;
+  --accent: #a2441f;
+  --code-bg: #f4f1ea;
+  --row-alt: #f8f6f1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e6e3dd;
+    --muted: #9a958c;
+    --bg: #1b1a18;
+    --rule: #34322e;
+    --accent: #e08a5f;
+    --code-bg: #252421;
+    --row-alt: #22211e;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+main, .site-header, .site-footer {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.site-header {
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2rem;
+}
+.site-header a { color: var(--text); text-decoration: none; }
+.site-header .site-name { font-weight: 600; }
+.site-header .sep { color: var(--muted); margin: 0 0.35rem; }
+.site-header a:hover { color: var(--accent); }
+
+h1, h2, h3 {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 2rem; margin: 0 0 0.25rem; }
+h2 { font-size: 1.35rem; margin: 2.5rem 0 0.75rem; }
+
+.meta {
+  color: var(--muted);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  margin: 0 0 2rem;
+}
+
+a { color: var(--accent); text-underline-offset: 0.15em; }
+
+ul, ol { padding-left: 1.4rem; }
+li { margin: 0.35rem 0; }
+
+/* Tables scroll sideways on small screens instead of squeezing. */
+table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin: 1.25rem 0;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  min-width: 9rem;
+}
+th {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+tbody tr:nth-child(even) { background: var(--row-alt); }
+
+pre {
+  position: relative;
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1rem 1rem 1rem;
+  padding-top: 2.5rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+:not(pre) > code { background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 4px; font-size: 0.9em; }
+
+button.copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font: 600 0.8rem system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+}
+button.copy:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Landing page list */
+.intro { color: var(--muted); margin-bottom: 2rem; }
+.items { list-style: none; padding: 0; margin: 0; }
+.items li { margin: 0; padding: 1.1rem 0; border-top: 1px solid var(--rule); }
+.items li:last-child { border-bottom: 1px solid var(--rule); }
+.items a.title {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+}
+.items a.title:hover { color: var(--accent); }
+.items .date {
+  display: block;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.items p { margin: 0.3rem 0 0; }
+
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.site-footer a { color: var(--muted); }
