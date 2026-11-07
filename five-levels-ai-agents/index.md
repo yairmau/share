@@ -5,20 +5,22 @@ share: true
 summary: How researchers can go from chatting with an AI to working with an AI agent inside their project folders, in five levels, with paste-ready prompts for any AI tool.
 ---
 
-An agent is a chatbot that works inside a folder on your computer: it reads your files, writes new ones and runs code, instead of waiting for you to paste things in. This guide climbs from the simplest setup to the most capable one in five levels, like the galaxy-brain meme below. Level 5 comes in two versions, 5a and 5b: two ways to keep a project consistent across computers. Stop at whichever level fits your work.
+An agent is a chatbot that works inside a folder on your computer: it reads your files, writes new ones and runs code, instead of waiting for you to paste things in. This guide climbs from the simplest setup to the most capable one in five levels, like the galaxy-brain meme below. Stop at whichever level fits your work.
 
 <img src="{{ '/five-levels-ai-agents/galaxy-brain.jpg' | relative_url }}" alt="Galaxy-brain meme: five panels, each brain glowing brighter. Level 1, give the AI a folder. Level 2, work in VS Code. Level 3, standing rules. Level 4, procedures and skills. Level 5a or 5b, any machine." style="width: 100%; height: auto;">
 
 The guide explains *why* each level exists. It leaves the *how* to your own AI, because tools change every few months and your AI knows your setup better than any tutorial. Each level ends with a prompt: paste it into the AI tool you use (Claude, ChatGPT, Gemini or another) and it will walk you through that step for your tool and project.
 
+**Level 0:** I assume everyone is familiar with using chatbots like ChatGPT, Gemini or Claude on a browser.
+
 | Level | What you add | Problem it solves |
 | --- | --- | --- |
-| 🧠 1 | A desktop app connected to a folder | Copying data and code back and forth between you and a chatbot |
-| 🧠✨ 2 | VS Code, an AI extension, git | Not seeing or being able to undo what the agent changed |
-| 🌟 3 | `AGENTS.md` | Re-explaining your project in every session |
-| 🌌 4 | Procedures and skills | Re-explaining the same task every time it comes up |
-| 🌌🌌 5a | A git remote and `progress.md` | Losing continuity when you switch computers |
-| 🌌🌌 5b | The project on a university server | Keeping several copies in sync (an alternative to 5a) |
+| 1 | A desktop app connected to a folder | Copying data and code back and forth between you and a chatbot |
+| 2 | VS Code, an AI extension, git | Not seeing or being able to undo what the agent changed |
+| 3 | `AGENTS.md` | Re-explaining your project in every session |
+| 4 | Procedures and skills | Re-explaining the same task every time it comes up |
+| 5a | A git remote and `progress.md` | Losing continuity when you switch computers |
+| 5b | The project on a university server | Keeping several copies in sync (an alternative to 5a) |
 
 Two running examples show what each level means in practice:
 
@@ -26,6 +28,8 @@ Two running examples show what each level means in practice:
 - **Writing:** a three-year grant proposal with a strict page limit and a set of required sections.
 
 ## 🧠 Level 1: Give the AI a folder
+
+<img src="{{ '/five-levels-ai-agents/level-1-brain.jpg' | relative_url }}" alt="Level 1 glowing brain" style="width: 180px; height: auto;">
 
 **The problem.** With a chatbot, you are the go-between: you paste data in, copy code out, run it, paste back the error, and repeat. The AI never sees your actual files.
 
@@ -53,15 +57,19 @@ small task I could try with my own files.
 
 ## 🧠✨ Level 2: Work in VS Code
 
+<img src="{{ '/five-levels-ai-agents/level-2-brain.jpg' | relative_url }}" alt="Level 2 glowing brain" style="width: 180px; height: auto;">
+
 **The problem.** Desktop apps show the conversation well but the files poorly. It is hard to see which files changed, compare before and after, or undo a bad edit.
 
 **What you add.**
 
 - **VS Code** (a free editor) with your AI's extension: Claude Code, Codex, Gemini or GitHub Copilot. You see the file tree, open data and scripts side by side, and see each edit the agent makes as a highlighted change.
-- **Git**, a version history for the folder. Every change can be inspected and undone. VS Code's Source Control panel makes it usable without the command line, and the agent can set it up for you.
+- **Git**, a version history for the folder. The agent can touch five files in one request; git groups that into a single reviewable snapshot, so you see exactly what changed and can revert it in one click, unlike Dropbox or Google Drive, which only version files one at a time with no sense of "before this prompt." VS Code's Source Control panel makes it usable without the command line, and the agent can set it up for you.
 - **Past sessions.** The extension keeps your earlier conversations, so you can resume one instead of starting from scratch.
 
 **In the examples.** *Data:* the agent writes `scripts/01_clean.py`, and you read it before it runs. When a cleaning step goes wrong, you revert it in one click. *Grant:* each section is a file in `draft/`, so you see exactly which sentences the agent rewrote.
+
+One caution: if your project folder lives inside Dropbox, Google Drive or OneDrive, don't set up git there. Two sync systems watching the same files can corrupt each other. Either put git outside the synced folder, or pick one or the other for this project.
 
 **Prompt to paste:**
 
@@ -77,6 +85,8 @@ the web, check the current documentation first.
 
 ## 🌟 Level 3: Standing rules
 
+<img src="{{ '/five-levels-ai-agents/level-3-brain.jpg' | relative_url }}" alt="Level 3 glowing brain" style="width: 180px; height: auto;">
+
 **The problem.** You can resume a past session, but very long sessions become less effective: the agent loses track of early details, and starting fresh often works better. A new session knows nothing about your project, so you re-explain what the data is, where things are, and what must never happen. Forget one rule, and the agent breaks it.
 
 **What you add.** A short file of standing rules that the agent reads at the start of every session. Its name depends on the tool: Claude Code reads `CLAUDE.md`, Gemini CLI reads `GEMINI.md`, and most others read `AGENTS.md`. Your AI knows which name it expects. Below, `AGENTS.md` stands for whichever name your tool uses.
@@ -90,6 +100,20 @@ project/
 ```
 
 Write rules the agent can check itself against. "Be rigorous" changes nothing. "Every parameter needs units and a source" does. When the agent does something you didn't want, add a rule rather than only correcting it in the chat.
+
+A short `AGENTS.md` might read:
+
+```markdown
+# Soil moisture project
+
+Logger data from four plots, 2024-2026. Goal: drying-rate model for the paper.
+
+## Rules
+- Never modify files in `data/raw/`.
+- Log every cleaning decision in `output/cleaning_log.md`.
+- Don't drop outliers without asking me first.
+- Units on every parameter, always.
+```
 
 **In the examples.** *Data:* "Never modify `data/raw/`. Log every cleaning decision in `output/cleaning_log.md`. Don't drop outliers without asking me." *Grant:* "Cite only sources in `references.bib`, and never invent a reference. Mark gaps with [CITATION NEEDED]. No hype words."
 
@@ -105,6 +129,8 @@ check yourself against, not vague ones. Explain each part as you write it.
 ```
 
 ## 🌌 Level 4: Procedures and skills
+
+<img src="{{ '/five-levels-ai-agents/level-4-brain.jpg' | relative_url }}" alt="Level 4 glowing brain" style="width: 180px; height: auto;">
 
 **The problem.** Some tasks come up again and again: a statistical analysis done your group's way, figures in your house style, the final check before submitting. Putting every step of each in `AGENTS.md` makes it long, and the agent reads all of it every time, even when it isn't relevant.
 
@@ -122,6 +148,33 @@ project/
 
 A good rule of thumb: when you notice yourself explaining the same steps a second time, ask the agent to turn them into a procedure.
 
+A plain procedure file is just Markdown, like `agent-docs/statistics.md`:
+
+```markdown
+# Statistics procedure
+
+Use when: running any statistical test for this project.
+
+1. If plots are measured repeatedly over time, use a mixed model, not a
+   plain t-test or ANOVA.
+2. Always report effect sizes with 95% confidence intervals, not just p-values.
+3. State the model and software version used in the methods section.
+```
+
+A *skill* adds a short header so the agent can find it on its own, without `AGENTS.md` pointing to it:
+
+```markdown
+---
+name: statistics
+description: Use when running any statistical test or reporting results for this project.
+---
+
+1. If plots are measured repeatedly over time, use a mixed model, not a
+   plain t-test or ANOVA.
+2. Always report effect sizes with 95% confidence intervals, not just p-values.
+3. State the model and software version used in the methods section.
+```
+
 **In the examples.** *Data:* `statistics.md` says to use mixed models when plots are measured repeatedly, and to report effect sizes with confidence intervals. *Grant:* `grant-review.md` has the agent review a draft as a skeptical panel member would, against the funder's evaluation criteria.
 
 **Prompt to paste** (into the agent, inside your project folder):
@@ -137,6 +190,8 @@ check your tool's current documentation on skills first.
 ```
 
 ## 🌌🌌 Level 5a: Sync copies across machines
+
+<img src="{{ '/five-levels-ai-agents/level-5-brain.jpg' | relative_url }}" alt="Level 5 glowing brain" style="width: 180px; height: auto;">
 
 Level 5 has two versions that solve the same problem: keep synced copies on each computer (5a), or keep a single copy on a server (5b). Pick one.
 
