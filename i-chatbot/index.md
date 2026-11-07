@@ -1,5 +1,5 @@
 ---
-title: "I, Robot"
+title: "I, Chatbot"
 date: 2026-11-07
 share: true
 summary: When should a chatbot say "I"? A proposal between Sherry Turkle's critique and a clunky ban on the first person, with paste-ready instructions for any AI assistant, including a stricter version for kids.
