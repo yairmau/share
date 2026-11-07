@@ -98,8 +98,10 @@ th {
 }
 tbody tr:nth-child(even) { background: var(--row-alt); }
 
+.code-wrap { position: relative; margin: 1.25rem 0; }
+.code-wrap pre { margin: 0; }
+
 pre {
-  position: relative;
   background: var(--code-bg);
   border: 1px solid var(--rule);
   border-radius: 8px;

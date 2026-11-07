@@ -37,19 +37,61 @@
 
   <script>
     // Add a copy button to every code block.
+    // Works on every code block, including ones added to future pages.
+    // The button sits outside the <pre>, and the text is read from the block
+    // itself at click time, so only the block's own content is copied.
+    function legacyCopy(text) {
+      // Fallback for browsers or connections (e.g. plain http) where
+      // navigator.clipboard is unavailable.
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "0";
+      ta.style.left = "0";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      ta.setSelectionRange(0, text.length); // needed on iOS Safari
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      window.getSelection && window.getSelection().removeAllRanges();
+      return ok;
+    }
+
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text).catch(function () {
+          if (!legacyCopy(text)) throw new Error("copy failed");
+        });
+      }
+      return legacyCopy(text) ? Promise.resolve() : Promise.reject(new Error("copy failed"));
+    }
+
     document.querySelectorAll("pre").forEach(function (pre) {
+      var wrap = document.createElement("div");
+      wrap.className = "code-wrap";
+      pre.parentNode.insertBefore(wrap, pre);
+      wrap.appendChild(pre);
+
       var btn = document.createElement("button");
       btn.className = "copy";
       btn.type = "button";
       btn.textContent = "Copy";
       btn.addEventListener("click", function () {
-        var code = pre.querySelector("code") || pre;
-        navigator.clipboard.writeText(code.innerText).then(function () {
+        var source = pre.querySelector("code") || pre;
+        var text = source.textContent.replace(/\n$/, "");
+        copyText(text).then(function () {
           btn.textContent = "Copied";
-          setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+        }, function () {
+          btn.textContent = "Select and copy manually";
+        }).then(function () {
+          setTimeout(function () { btn.textContent = "Copy"; }, 2000);
         });
       });
-      pre.appendChild(btn);
+      wrap.appendChild(btn);
     });
   </script>
 </body>
