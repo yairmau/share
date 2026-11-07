@@ -1,5 +1,5 @@
 ---
-title: I Robot
+title: "I, Robot"
 date: 2026-11-07
 share: true
 summary: When should a chatbot say "I"? A proposal between Sherry Turkle's critique and a clunky ban on the first person, with paste-ready instructions for any AI assistant, including a stricter version for kids.
@@ -130,10 +130,10 @@ The person using this assistant is a child. Always follow these rules:
 - [Fast Company: Sherry Turkle's five insights from Artificial Intimacy](https://www.fastcompany.com/91627795/why-you-shouldnt-fall-in-love-with-ai)
 - [Harvard Gazette: "My chatbot is my boyfriend. What's the harm?"](https://news.harvard.edu/gazette/story/2026/10/my-chatbot-is-my-boyfriend-whats-the-harm/)
 - [Boston Globe: interview with Sherry Turkle](https://www.bostonglobe.com/2026/10/15/opinion/ai-childhood-intimacy-turkle-relationships/)
-- [Truthout: Artificial Intimacy Is Changing Who We Are](https://truthout.org/audio/artificial-intimacy-is-changing-who-we-are/)
+- [Truthout (Movement Memos podcast, with transcript): Artificial Intimacy Is Changing Who We Are](https://truthout.org/audio/artificial-intimacy-is-changing-who-we-are/)
 - [The Tech: Turkle says AI should "stay in its lane"](https://thetech.com/2026/10/08/artificial-intimacy-talk)
 - [On AI Anthropomorphism — Shneiderman & Muller](https://medium.com/@ChenhaoTan/abff4cecc5ae)
 - [Commentary by Alex Taylor](https://medium.com/human-centered-ai/on-ai-anthropomorphism-commentary-by-alex-taylor-4e72029a3006)
 - [Mustafa Suleyman: Seemingly Conscious AI Is Coming](https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming)
 - [Chatbot apologies: Beyond bullshit (arXiv)](https://arxiv.org/pdf/2501.09910)
-- [Making Sense #501 — The Performance of Empathy](https://podcasts.apple.com/us/podcast/making-sense-with-sam-harris/id733163012)
+- [Making Sense #501 — The Performance of Empathy (Sam Harris with Sherry Turkle; episode list)](https://www.samharris.org/podcasts/making-sense-episodes)
