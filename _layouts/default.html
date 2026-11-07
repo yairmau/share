@@ -10,6 +10,16 @@
   <meta property="og:description" content="{{ page.summary | default: site.description | escape }}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
+  {% if site.google_analytics and jekyll.environment == "production" %}
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "{{ site.google_analytics }}");
+  </script>
+  {% endif %}
   <script>
     // Apply a saved light/dark choice before the page draws, to avoid a flash.
     try {

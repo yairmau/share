@@ -33,7 +33,7 @@ This repo is the source for **yairmau.com/share**: Yair Mau's pages for friends 
 
 | Path | Purpose |
 | --- | --- |
-| `_config.yml` | Site settings. `baseurl: /share` must stay. `noindex: true` asks search engines not to index |
+| `_config.yml` | Site settings. `baseurl: /share` must stay. `noindex: true` asks search engines not to index. `google_analytics` holds the GA4 ID; the layout adds the tracking code to every page |
 | `_layouts/default.html` | The single layout: header, article, footer, copy-button script |
 | `assets/style.css` | All styling (light and dark mode) |
 | `index.md` | Landing page. Lists every page with `share: true`, newest first |

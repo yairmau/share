@@ -7,6 +7,9 @@ baseurl: /share
 # Ask search engines not to index these pages. Set to false to allow indexing.
 noindex: true
 
+# Google Analytics 4 measurement ID. Remove or leave empty to turn analytics off.
+google_analytics: G-43N4LS3BPR
+
 markdown: kramdown
 kramdown:
   input: GFM
