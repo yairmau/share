@@ -69,7 +69,7 @@ small task I could try with my own files.
 
 **In the examples.** *Data:* the agent writes `scripts/01_clean.py`, and you read it before it runs. When a cleaning step goes wrong, you revert it in one click. *Grant:* each section is a file in `draft/`, so you see exactly which sentences the agent rewrote.
 
-One caution: if your project folder lives inside Dropbox, Google Drive or OneDrive, don't set up git there. Two sync systems watching the same files can corrupt each other. Either put git outside the synced folder, or pick one or the other for this project.
+One caution: if your project folder lives inside Dropbox, Google Drive or OneDrive, don't set up git there. Two sync systems watching the same files can cause sync conflicts and leave the repository in an inconsistent state. Either put git outside the synced folder, or pick one or the other for this project.
 
 **Prompt to paste:**
 
@@ -155,8 +155,9 @@ A plain procedure file is just Markdown, like `agent-docs/statistics.md`:
 
 Use when: running any statistical test for this project.
 
-1. If plots are measured repeatedly over time, use a mixed model, not a
-   plain t-test or ANOVA.
+1. When observations are not independent (repeated measures, nested plots),
+   account for that dependence, and explain the proposed model and its
+   assumptions before fitting it.
 2. Always report effect sizes with 95% confidence intervals, not just p-values.
 3. State the model and software version used in the methods section.
 ```
@@ -169,13 +170,14 @@ name: statistics
 description: Use when running any statistical test or reporting results for this project.
 ---
 
-1. If plots are measured repeatedly over time, use a mixed model, not a
-   plain t-test or ANOVA.
+1. When observations are not independent (repeated measures, nested plots),
+   account for that dependence, and explain the proposed model and its
+   assumptions before fitting it.
 2. Always report effect sizes with 95% confidence intervals, not just p-values.
 3. State the model and software version used in the methods section.
 ```
 
-**In the examples.** *Data:* `statistics.md` says to use mixed models when plots are measured repeatedly, and to report effect sizes with confidence intervals. *Grant:* `grant-review.md` has the agent review a draft as a skeptical panel member would, against the funder's evaluation criteria.
+**In the examples.** *Data:* `statistics.md` says to flag non-independent observations and justify the model choice before fitting, and to report effect sizes with confidence intervals. *Grant:* `grant-review.md` has the agent review a draft as a skeptical panel member would, against the funder's evaluation criteria.
 
 **Prompt to paste** (into the agent, inside your project folder):
 
@@ -209,7 +211,7 @@ project/
 └── .gitignore     ← keeps large data out of git
 ```
 
-Two cautions. Large data files don't belong in git: keep them on shared storage and note their location in `AGENTS.md`. And don't put a git folder inside Dropbox or OneDrive, because two sync systems on the same files can corrupt each other.
+Two cautions. Large data files don't belong in git: keep them on shared storage and note their location in `AGENTS.md`. And don't put a git folder inside Dropbox or OneDrive, because two sync systems on the same files can cause sync conflicts and leave the repository in an inconsistent state.
 
 If a collaborator uses a different AI tool, ask your agent to make the rules file readable by both, for example a `CLAUDE.md` that points to `AGENTS.md`.
 
@@ -269,6 +271,8 @@ The agent is a fast, tireless assistant. The scientific judgment stays with you.
 - **Check citations and numbers yourself.** Agents can be confidently wrong and can attribute a claim to the wrong paper.
 - **Keep results in files, not in the chat.** A script can be re-run and reviewed. A number that appears only in a chat answer cannot.
 - **Think before adding sensitive data.** Files the agent reads are sent to the AI provider. Check your university's policy on personal, medical or confidential data, and the funder's policy on AI-assisted writing.
+- **Reproducible isn't the same as correct.** Git tells you exactly what the agent did; it says nothing about whether the scientific reasoning behind it was sound. An agent can decide, on its own, how to handle missing data, which model to fit, or which outliers to drop — decisions that need your judgment, not just mechanical ones like file naming or formatting. Ask it to flag which kind of decision it's making.
+- **Use approval checkpoints for consequential choices.** Let the agent work independently on routine steps, but have it stop and wait before anything that changes the analysis. For example: "Explore three approaches to handling missing observations. Don't change the original data. Compare the implications and recommend one, but wait for my approval before applying it to the main analysis."
 
 **Prompt to paste,** at any level, to review a setup:
 
