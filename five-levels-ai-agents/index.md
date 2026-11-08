@@ -35,6 +35,8 @@ Two running examples show what each level means in practice:
 
 **What you add.** The desktop app of Claude or ChatGPT, connected to one project folder. The agent now does that loop itself: it opens the files, writes code, runs it, fixes errors and saves results next to your data. It asks permission before acting, and you approve each step.
 
+Some apps split chat and agent/code modes into separate tabs or a toggle — Claude's desktop app and ChatGPT's both work this way — and you must switch manually; the app won't do it for you. If the agent isn't touching your files, check you're in the right mode.
+
 ```
 soil-moisture-2026/
 ├── data/raw/      ← originals: the agent reads, never edits
