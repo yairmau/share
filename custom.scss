@@ -172,6 +172,13 @@ code {
   margin: 0 auto;
 }
 
+// Navbar logo: the φ mark is tall and narrow, so it gets more height than Quarto's default
+.navbar .navbar-logo {
+  height: 32px;
+  max-height: 32px;
+  min-height: 0;
+}
+
 .collapse {
   background-color: $navbar-bg;
 }

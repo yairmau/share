@@ -4,15 +4,19 @@ project:
   render:
     - "*.qmd"
     - "*/*.qmd"
+  resources:
+    - archive/logo/favicon.ico
+    - archive/logo/apple-touch-icon.png
 
 website:
   title: "Yair Mau"
   site-url: https://yairmau.com/share/
   search: true
-  favicon: archive/site_images/favicon.ico
+  favicon: archive/logo/favicon.svg
   google-analytics: "G-43N4LS3BPR"
   navbar:
-    logo: archive/site_images/site-logo-light.png
+    logo: archive/logo/phi-mark-white.svg
+    logo-alt: "Yair Mau"
     pinned: false
     collapse: true
     search: true
