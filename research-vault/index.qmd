@@ -17,10 +17,11 @@ Send your librarian every paper you read that matters, along with your own notes
 - I wrote that Smith et al. found such-and-such, but I'm not sure — go check the actual paper.
 - I don't want to overstate the gap in my introduction. Does what I wrote hold up against what I've actually read?
 - I listed two examples of this phenomenon. Are there others I've read about and forgotten?
+- Show me the exact wording that Smith et al. used to describe this method, I want to be sure.
 
 ## Beyond papers
 
-The same logic applies to the rest of a researcher's day-to-day. Looking for a statistical method that fits your data, brainstorming a new project, putting together material for a course you teach — all of it goes faster with a librarian who has read everything you've given it and can point back to exactly where.
+The same logic applies to the rest of a researcher's day-to-day. Looking for a statistical method that fits your data, brainstorming a new project, putting together material for a course you teach — all of it goes faster with a librarian who has read everything you've given it **and can point back to exactly where**.
 
 If that sounds useful, here's how to set one up.
 
@@ -30,7 +31,7 @@ Three things, nothing more:
 
 - **A git-managed folder.** This is the vault itself — the raw material and the wiki your librarian writes both live here. Git gives you full history and an easy way to move the whole thing to another machine.
 - **A way to get papers in.** Zotero is the simplest option: it's free, its browser extension saves a PDF with one click from almost any page, and its built-in reader lets you highlight and annotate as you read.
-- **An agent to do the organizing.** This can be a desktop AI app like Claude or ChatGPT pointed at your vault folder, but an AI coding assistant inside VS Code (Claude Code, for instance) is the better fit — it also needs to run small scripts and keep things in sync, not just read and write files.
+- **An agent to do the organizing.** This can be a desktop AI app like Claude, ChatGPT or Gemini pointed at your vault folder, but an AI coding assistant inside VS Code (Claude Code, for instance) is the better fit — it also needs to run small scripts and keep things in sync, not just read and write files.
 
 Because it's all just git and plain text, you're not tied to your desk to use it. Point the same AI app's phone or web version at the repo and you can query the librarian, add a quick capture, or ask it to process something new from wherever you are.
 

@@ -192,13 +192,13 @@ code {
   margin-bottom: 3rem;
 }
 
-#title-block-header .quarto-title > .title {
-  margin-bottom: 1.5rem;
+#title-block-header.quarto-title-block.default .quarto-title .title {
+  margin-bottom: 2.5rem;
 }
 
-#title-block-header > .description {
+#title-block-header .description {
   max-width: 600px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 2.5rem;
   color: $text-muted;
   font-size: 1.1rem;
   font-style: italic;
@@ -227,8 +227,4 @@ code {
 #title-block-header .quarto-title-meta-contents p {
   display: inline;
   margin: 0;
-}
-
-#title-block-header .quarto-title-meta > div:not(:last-child)::after {
-  content: "\00a0\00b7";
 }

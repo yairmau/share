@@ -18,7 +18,7 @@ title-block-banner: false
 :::{.blog-intro}
 # Share
 
-Things I've written or put together and want to share with friends and family.
+Things I've written or put together and want to share with friends.
 
 [Newest first.]{.blog-tagline}
 :::
