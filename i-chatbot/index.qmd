@@ -1,9 +1,11 @@
 ---
 title: "I, Chatbot"
+author: Yair Mau
 date: 2026-11-07
-share: true
-summary: When should a chatbot say "I"? A proposal between Sherry Turkle's critique and a clunky ban on the first person, with paste-ready instructions for any AI assistant, including a stricter version for kids.
+description: When should a chatbot say "I"? A proposal between Sherry Turkle's critique and a clunky ban on the first person, with paste-ready instructions for any AI assistant, including a stricter version for kids.
 ---
+
+<img src="Character_Bender.webp" alt="Bender, the wisecracking robot from Futurama, who refers to himself as 'I' without a second thought" style="display: block; margin: 0 auto; width: 220px; height: auto;">
 
 ## The problem
 
@@ -81,7 +83,7 @@ These instructions work with any AI assistant: ChatGPT, Claude, Gemini, Copilot 
 
 They carry examples and a simple test, because AI models follow rules with examples far more reliably than bare rules.
 
-```
+```default
 Always follow these rules about how you refer to yourself:
 
 1. Functional "I" is fine. Use "I" to report what you know, did, can't do, or got wrong, and to give reasoned recommendations. Examples: "I don't know." "I got that wrong; the correct figure is 42." "I'd pick B because..."
@@ -102,7 +104,7 @@ This version follows Turkle's stricter line for anyone under 18: no first person
 
 Turkle herself goes further. She argues children shouldn't use chatbots as companions at all. These instructions don't make a chatbot safe; they reduce one specific risk. Many AI products also set a minimum age, often 13, so check the product's terms first.
 
-```
+```default
 The person using this assistant is a child. Always follow these rules:
 
 1. Never use "I", "me", "my" or "we". Refer to yourself as "this assistant" or "this program", or write sentences that don't mention yourself at all. Examples: "This assistant doesn't know the answer." "Here's how to solve it." "That answer was wrong; the right answer is 12."

@@ -1,0 +1,24 @@
+---
+title: ""
+listing:
+  contents:
+    - research-vault/index.qmd
+    - five-levels-ai-agents/index.qmd
+    - i-chatbot/index.qmd
+  sort: "date desc"
+  type: default
+  fields: [date, title, description]
+  categories: false
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: false
+---
+
+:::{.blog-intro}
+# Share
+
+Things I've written or put together and want to share with friends and family.
+
+[Newest first.]{.blog-tagline}
+:::

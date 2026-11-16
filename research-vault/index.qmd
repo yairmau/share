@@ -1,0 +1,71 @@
+---
+title: A personal research librarian
+author: Yair Mau
+date: 2026-11-16
+description: An AI agent that keeps your raw research material organized and builds a knowledge network out of it, so you can ask it what you actually know instead of trying to remember.
+---
+
+Research ideas come from everywhere: a paper, a talk, an email someone sent you, a web page, a YouTube video. Remembering all of it is hard. Noticing how it connects to everything else you've read or thought is harder still.
+
+This is about a personal research librarian: an AI agent that keeps your raw material — a research vault — in order, and keeps building a network of how everything in it relates, as you add to it.
+
+## Papers, the simplest case
+
+Send your librarian every paper you read that matters, along with your own notes and highlights. From then on, while writing a proposal or a paper, you can ask it things like:
+
+- Do I have a source for the claim I just wrote?
+- I wrote that Smith et al. found such-and-such, but I'm not sure — go check the actual paper.
+- I don't want to overstate the gap in my introduction. Does what I wrote hold up against what I've actually read?
+- I listed two examples of this phenomenon. Are there others I've read about and forgotten?
+
+## Beyond papers
+
+The same logic applies to the rest of a researcher's day-to-day. Looking for a statistical method that fits your data, brainstorming a new project, putting together material for a course you teach — all of it goes faster with a librarian who has read everything you've given it and can point back to exactly where.
+
+If that sounds useful, here's how to set one up.
+
+## The bare bones
+
+Three things, nothing more:
+
+- **A git-managed folder.** This is the vault itself — the raw material and the wiki your librarian writes both live here. Git gives you full history and an easy way to move the whole thing to another machine.
+- **A way to get papers in.** Zotero is the simplest option: it's free, its browser extension saves a PDF with one click from almost any page, and its built-in reader lets you highlight and annotate as you read.
+- **An agent to do the organizing.** This can be a desktop AI app like Claude or ChatGPT pointed at your vault folder, but an AI coding assistant inside VS Code (Claude Code, for instance) is the better fit — it also needs to run small scripts and keep things in sync, not just read and write files.
+
+## The simplest version
+
+1. Install the Zotero Connector (the browser extension) and start saving papers as you find them — from a journal page, Google Scholar, arXiv, wherever you read.
+2. If you want, read the paper in Zotero's own PDF viewer and highlight or make notes as you go. They're saved with the paper.
+3. Tag anything you want in the vault — "vault" works fine as a name. A small script watches your Zotero library for that tag and, when it sees one, pulls the paper's metadata and your highlights into the vault, along with the PDF's full text extracted out, so the librarian can check a claim against the actual paper without having to open a PDF.
+4. Every so often, tell your librarian to go over what's new and update the wiki.
+
+## Set one up yourself
+
+This prompt won't recreate the exact setup above — tools and APIs change — but it gives any AI agent enough to build the same idea with you, and to walk you through each step rather than assuming you know git, Zotero or the command line already.
+
+```default
+I want to set up a personal "research librarian": an AI agent that keeps a folder of my research material organized and builds a linked wiki out of it, so I can ask it questions about what I've read instead of searching for it myself.
+
+First ask me: which AI tool and editor I'll run you in (VS Code with a coding assistant is the best fit, since you'll need to run scripts and git commands, not just read and write files), whether I already use Zotero or another reference manager, and whether I'm comfortable with git — I may not be, so explain anything you set up in plain language as you go, and check before running anything that changes or deletes files.
+
+Then help me build this:
+
+1. A git-managed folder (the vault), with a "raw" area for source material that's never hand-edited once it's in, and a "wiki" area of short, linked pages that you write and keep up to date.
+2. If I don't already have it, help me install Zotero and its browser connector, and show me how to save a paper and tag it (I'll use the tag "vault" unless you suggest a better name).
+3. A small script that watches my Zotero library for items with that tag, and for each one, pulls its metadata and my highlights/notes into the vault's raw folder, along with the full text extracted from the PDF — not the PDF itself.
+4. A short standing-rules file that you read every session, which tells you: process new raw material into the wiki, cite the exact source for every claim you write, and if you're not sure of something, write it as an open question instead of guessing.
+
+Once that's working, ask me what else I want you to pull in beyond papers — talks, clippings, web pages, whatever I read or watch for my research — and how I'd like each of those captured.
+```
+
+## Where this comes from
+
+Not a new idea, more a combination of two old ones. The link-everything-together part is the **Zettelkasten method**: small, cross-linked notes, the system behind the sociologist Niklas Luhmann's enormous slip-box, and popularized for academic work by Sönke Ahrens's *How to Take Smart Notes*. "Second brain" is the newer, more popular name for roughly the same goal — Tiago Forte's *Building a Second Brain* breaks it into four steps: capture, organize, distill, express. Both leave all four steps to you, by hand.
+
+What's new is handing two of those steps to an agent. In April 2026, Andrej Karpathy described keeping a personal knowledge base this way instead of the usual retrieve-from-raw-documents setup. Covering it, VentureBeat put it in the terms this page borrows: the LLM itself acts as a full-time "research librarian" — compiling, linting and interlinking the files on its own.
+
+## Sources
+
+- [VentureBeat: Karpathy shares LLM knowledge base architecture that bypasses RAG](https://venturebeat.com/data/karpathy-shares-llm-knowledge-base-architecture-that-bypasses-rag-with-an)
+- [Zettelkasten Method overview](https://rufuspollock.com/post/zettelkasten-method)
+- [Book summary: Building a Second Brain](https://mmapped.blog/posts/16-building-a-second-brain)

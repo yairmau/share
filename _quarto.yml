@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "*/*.qmd"
+
+website:
+  title: "Yair Mau"
+  site-url: https://yairmau.com/share/
+  search: true
+  favicon: archive/site_images/favicon.ico
+  google-analytics: "G-43N4LS3BPR"
+  navbar:
+    logo: archive/site_images/site-logo-light.png
+    pinned: false
+    collapse: true
+    search: true
+    right:
+      - text: "← Back to yairmau.com"
+        href: https://yairmau.com/
+
+format:
+  html:
+    theme:
+      - flatly
+      - custom.scss
+    css: styles.css
+    highlight: false
+    highlight-style: breezedark
+    mainfont: Ubuntu
+    monofont: Ubuntu Mono
+    grid:
+      body-width: 700px
+    link-external-newwindow: true
+    include-in-header:
+      - includes.html

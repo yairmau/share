@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.41">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Yair Mau">
+<meta name="dcterms.date" content="2026-11-07">
+<meta name="description" content="How researchers can go from chatting with an AI to working with an AI agent inside their project folders, in five levels, with paste-ready prompts for any AI tool.">
+
+<title>Five Levels of AI Agents for Research – Yair Mau</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../archive/site_images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-02532eb62a13a6221e9e703c5457384e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4363eaa2714099b269d1146a4960999c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-43N4LS3BPR"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-43N4LS3BPR', { 'anonymize_ip': true});
+</script>
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../archive/site_images/site-logo-light.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Yair Mau</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://yairmau.com/"> 
+<span class="menu-text">← Back to yairmau.com</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Five Levels of AI Agents for Research</h1>
+</div>
+
+<div>
+  <div class="description">
+    How researchers can go from chatting with an AI to working with an AI agent inside their project folders, in five levels, with paste-ready prompts for any AI tool.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Yair Mau </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 7, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>An agent is a chatbot that works inside a folder on your computer: it reads your files, writes new ones and runs code, instead of waiting for you to paste things in. This guide climbs from the simplest setup to the most capable one in five levels, like the galaxy-brain meme below. Stop at whichever level fits your work.</p>
+<p><img src="galaxy-brain.jpg" alt="Galaxy-brain meme: five panels, each brain glowing brighter. Level 1, give the AI a folder. Level 2, work in VS Code. Level 3, standing rules. Level 4, procedures and skills. Level 5a or 5b, any machine." style="width: 100%; height: auto;"></p>
+<p>The guide explains <em>why</em> each level exists. It leaves the <em>how</em> to your own AI, because tools change every few months and your AI knows your setup better than any tutorial. Each level ends with a prompt: paste it into the AI tool you use (Claude, ChatGPT, Gemini or another) and it will walk you through that step for your tool and project.</p>
+<p><strong>Level 0:</strong> I assume everyone is familiar with using chatbots like ChatGPT, Gemini or Claude on a browser.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>What you add</th>
+<th>Problem it solves</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>A desktop app connected to a folder</td>
+<td>Copying data and code back and forth between you and a chatbot</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>VS Code, an AI extension, git</td>
+<td>Not seeing or being able to undo what the agent changed</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><code>AGENTS.md</code></td>
+<td>Re-explaining your project in every session</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Procedures and skills</td>
+<td>Re-explaining the same task every time it comes up</td>
+</tr>
+<tr class="odd">
+<td>5a</td>
+<td>A git remote and <code>progress.md</code></td>
+<td>Losing continuity when you switch computers</td>
+</tr>
+<tr class="even">
+<td>5b</td>
+<td>The project on a university server</td>
+<td>Keeping several copies in sync (an alternative to 5a)</td>
+</tr>
+</tbody>
+</table>
+<p>Two running examples show what each level means in practice:</p>
+<ul>
+<li><strong>Data analysis:</strong> a year of soil-moisture readings from 12 field plots under two irrigation treatments, to be cleaned, analyzed and turned into figures.</li>
+<li><strong>Writing:</strong> a three-year grant proposal with a strict page limit and a set of required sections.</li>
+</ul>
+<section id="level-1-give-the-ai-a-folder" class="level2">
+<h2 class="anchored" data-anchor-id="level-1-give-the-ai-a-folder">Level 1: Give the AI a folder</h2>
+<p><img src="level-1-brain.jpg" alt="Level 1 glowing brain" style="width: 180px; height: auto;"></p>
+<p><strong>The problem.</strong> With a chatbot, you are the go-between: you paste data in, copy code out, run it, paste back the error, and repeat. The AI never sees your actual files.</p>
+<p><strong>What you add.</strong> The desktop app of Claude or ChatGPT, connected to one project folder. The agent now does that loop itself: it opens the files, writes code, runs it, fixes errors and saves results next to your data. It asks permission before acting, and you approve each step.</p>
+<p>Some apps split chat and agent/code modes into separate tabs or a toggle — Claude’s desktop app and ChatGPT’s both work this way — and you must switch manually; the app won’t do it for you. If the agent isn’t touching your files, check you’re in the right mode.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>soil-moisture-2026/</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>├── data/raw/      ← originals: the agent reads, never edits</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>└── output/        ← figures and tables the agent creates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>In the examples.</strong> <em>Data:</em> “Look at the logger files, report gaps and impossible values, and plot moisture over time for each plot.” <em>Grant:</em> drop in the funder’s call and your recent papers, then ask “List every requirement in this call and check my draft aims against them.”</p>
+<p><strong>Prompt to paste:</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>I'm a university researcher and want to start using an AI agent that works directly on files in a project folder on my computer, through a desktop app. First ask me which AI tool I use, my operating system, and what my project is. Then explain how to install the app, connect it to one folder, and what the permission prompts mean. If you can search the web, check the current documentation first, since these apps change often. Finally, suggest a first small task I could try with my own files.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="level-2-work-in-vs-code" class="level2">
+<h2 class="anchored" data-anchor-id="level-2-work-in-vs-code">Level 2: Work in VS Code</h2>
+<p><img src="level-2-brain.jpg" alt="Level 2 glowing brain" style="width: 180px; height: auto;"></p>
+<p><strong>The problem.</strong> Desktop apps show the conversation well but the files poorly. It is hard to see which files changed, compare before and after, or undo a bad edit.</p>
+<p><strong>What you add.</strong></p>
+<ul>
+<li><strong>VS Code</strong> (a free editor) with your AI’s extension: Claude Code, Codex, Gemini or GitHub Copilot. You see the file tree, open data and scripts side by side, and see each edit the agent makes as a highlighted change.</li>
+<li><strong>Git</strong>, a version history for the folder. The agent can touch five files in one request; git groups that into a single reviewable snapshot, so you see exactly what changed and can revert it in one click, unlike Dropbox or Google Drive, which only version files one at a time with no sense of “before this prompt.” VS Code’s Source Control panel makes it usable without the command line, and the agent can set it up for you.</li>
+<li><strong>Past sessions.</strong> The extension keeps your earlier conversations, so you can resume one instead of starting from scratch.</li>
+</ul>
+<p><strong>In the examples.</strong> <em>Data:</em> the agent writes <code>scripts/01_clean.py</code>, and you read it before it runs. When a cleaning step goes wrong, you revert it in one click. <em>Grant:</em> each section is a file in <code>draft/</code>, so you see exactly which sentences the agent rewrote.</p>
+<p>One caution: if your project folder lives inside Dropbox, Google Drive or OneDrive, don’t set up git there. Two sync systems watching the same files can cause sync conflicts and leave the repository in an inconsistent state. Either put git outside the synced folder, or pick one or the other for this project.</p>
+<p><strong>Prompt to paste:</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>I use an AI agent on a research project folder and want to move to VS Code with an AI extension, plus git for version history. First ask me which AI tool I use and my operating system. Then explain: which extension to install, how to open my project folder, how to see and undo the agent's changes, how to resume past sessions, and how to set up git using VS Code's Source Control panel. I've never used git, so explain it in plain terms. If you can search the web, check the current documentation first.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="level-3-standing-rules" class="level2">
+<h2 class="anchored" data-anchor-id="level-3-standing-rules">Level 3: Standing rules</h2>
+<p><img src="level-3-brain.jpg" alt="Level 3 glowing brain" style="width: 180px; height: auto;"></p>
+<p><strong>The problem.</strong> You can resume a past session, but very long sessions become less effective: the agent loses track of early details, and starting fresh often works better. A new session knows nothing about your project, so you re-explain what the data is, where things are, and what must never happen. Forget one rule, and the agent breaks it.</p>
+<p><strong>What you add.</strong> A short file of standing rules that the agent reads at the start of every session. Its name depends on the tool: Claude Code reads <code>CLAUDE.md</code>, Gemini CLI reads <code>GEMINI.md</code>, and most others read <code>AGENTS.md</code>. Your AI knows which name it expects. Below, <code>AGENTS.md</code> stands for whichever name your tool uses.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>project/</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>├── AGENTS.md      ← the rules, under a page</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>│                    (CLAUDE.md for Claude Code, GEMINI.md for Gemini CLI)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>├── data/</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>└── scripts/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Write rules the agent can check itself against. “Be rigorous” changes nothing. “Every parameter needs units and a source” does. When the agent does something you didn’t want, add a rule rather than only correcting it in the chat.</p>
+<p>A short <code>AGENTS.md</code> might read:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Soil moisture project</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Logger data from four plots, 2024-2026. Goal: drying-rate model for the paper.</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rules</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Never modify files in <span class="in">`data/raw/`</span>.</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Log every cleaning decision in <span class="in">`output/cleaning_log.md`</span>.</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Don't drop outliers without asking me first.</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Units on every parameter, always.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>In the examples.</strong> <em>Data:</em> “Never modify <code>data/raw/</code>. Log every cleaning decision in <code>output/cleaning_log.md</code>. Don’t drop outliers without asking me.” <em>Grant:</em> “Cite only sources in <code>references.bib</code>, and never invent a reference. Mark gaps with [CITATION NEEDED]. No hype words.”</p>
+<p><strong>Prompt to paste</strong> (into the agent, inside your project folder):</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Create the file of standing project instructions that you read at the start of every session, using the file name your tool expects. First look through the folder and ask me what the project is, how it's organized, and which rules matter most to me. Keep it short: what the project is, where things are, how to run things, conventions, and things to never do. Use concrete rules you can check yourself against, not vague ones. Explain each part as you write it.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="level-4-procedures-and-skills" class="level2">
+<h2 class="anchored" data-anchor-id="level-4-procedures-and-skills">Level 4: Procedures and skills</h2>
+<p><img src="level-4-brain.jpg" alt="Level 4 glowing brain" style="width: 180px; height: auto;"></p>
+<p><strong>The problem.</strong> Some tasks come up again and again: a statistical analysis done your group’s way, figures in your house style, the final check before submitting. Putting every step of each in <code>AGENTS.md</code> makes it long, and the agent reads all of it every time, even when it isn’t relevant.</p>
+<p><strong>What you add.</strong> One procedure file per recurring task, in its own folder, listed in <code>AGENTS.md</code> with a line saying when to use it. The agent opens a procedure only when that task comes up. For procedures you use often, a <em>skill</em> goes one step further: a short description lets the agent recognize the task and load the procedure by itself, without being told.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>project/</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>├── AGENTS.md            ← "Before a statistical analysis,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>│                           read agent-docs/statistics.md"</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>└── agent-docs/</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    ├── statistics.md</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    ├── plotting-style.md</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    └── grant-review.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A good rule of thumb: when you notice yourself explaining the same steps a second time, ask the agent to turn them into a procedure.</p>
+<p>A plain procedure file is just Markdown, like <code>agent-docs/statistics.md</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Statistics procedure</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Use when: running any statistical test for this project.</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>When observations are not independent (repeated measures, nested plots),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>   account for that dependence, and explain the proposed model and its</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>   assumptions before fitting it.</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Always report effect sizes with 95% confidence intervals, not just p-values.</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>State the model and software version used in the methods section.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A <em>skill</em> adds a short header so the agent can find it on its own, without <code>AGENTS.md</code> pointing to it:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">name:</span><span class="co"> statistics</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> Use when running any statistical test or reporting results for this project.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>When observations are not independent (repeated measures, nested plots),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>   account for that dependence, and explain the proposed model and its</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>   assumptions before fitting it.</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Always report effect sizes with 95% confidence intervals, not just p-values.</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>State the model and software version used in the methods section.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>In the examples.</strong> <em>Data:</em> <code>statistics.md</code> says to flag non-independent observations and justify the model choice before fitting, and to report effect sizes with confidence intervals. <em>Grant:</em> <code>grant-review.md</code> has the agent review a draft as a skeptical panel member would, against the funder’s evaluation criteria.</p>
+<p><strong>Prompt to paste</strong> (into the agent, inside your project folder):</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>I want to store step-by-step procedures for tasks I repeat in this project. Create an agent-docs/ folder and add a section to my standing-instructions file listing each procedure and when to use it. Start by asking me which tasks I repeat, then write the first procedure with me. Also explain what "skills" are in the tool I use, how they differ from plain procedure files, and when it would be worth turning a procedure into a skill. If you can search the web, check your tool's current documentation on skills first.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="level-5a-sync-copies-across-machines" class="level2">
+<h2 class="anchored" data-anchor-id="level-5a-sync-copies-across-machines">Level 5a: Sync copies across machines</h2>
+<p><img src="level-5-brain.jpg" alt="Level 5 glowing brain" style="width: 180px; height: auto;"></p>
+<p>Level 5 has two versions that solve the same problem: keep synced copies on each computer (5a), or keep a single copy on a server (5b). Pick one.</p>
+<p><strong>The problem.</strong> You work on the lab desktop, then on your laptop at home. If the project is already synced through GitHub, Dropbox or Google Drive, the files follow you, but the agent’s session history stays on the first machine, so the second agent doesn’t know what was decided yesterday. You become the memory between them.</p>
+<p><strong>What you add.</strong></p>
+<ul>
+<li><strong>A git remote</strong> (GitHub; your university may have its own server). Push from one machine and pull on the other, so code, drafts and rules travel together.</li>
+<li><strong>A progress file</strong>, <code>progress.md</code>. A rule in <code>AGENTS.md</code> tells the agent to read it at the start of every session and update it at the end: what was done, what was decided, what comes next. It replaces the session history that doesn’t travel.</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>project/</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>├── AGENTS.md      ← "Read progress.md first; update it before ending"</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>├── progress.md    ← done · decided · next</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>└── .gitignore     ← keeps large data out of git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Two cautions. Large data files don’t belong in git: keep them on shared storage and note their location in <code>AGENTS.md</code>. And don’t put a git folder inside Dropbox or OneDrive, because two sync systems on the same files can cause sync conflicts and leave the repository in an inconsistent state.</p>
+<p>If a collaborator uses a different AI tool, ask your agent to make the rules file readable by both, for example a <code>CLAUDE.md</code> that points to <code>AGENTS.md</code>.</p>
+<p><strong>In the examples.</strong> <em>Data:</em> <code>progress.md</code> records “Plot 3 values above 0.6 excluded (sensor fault, confirmed by field notes). Next: drying-rate model.” <em>Grant:</em> “Aims 1–2 drafted, aim 3 waiting for co-PI input. Background is 0.4 pages over the limit.”</p>
+<p><strong>Prompt to paste</strong> (into the agent, inside your project folder):</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>I work on this project from more than one computer. Help me set up: (1) a private GitHub repository and the routine for pushing and pulling (first ask whether my university has its own Git server), (2) a .gitignore that keeps large data files out of git, and (3) a progress.md file, plus a rule in my standing-instructions file telling you to read it at the start of each session and update it at the end with what was done, decisions made, and next steps. Ask me where my large data lives.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="level-5b-one-copy-on-a-server" class="level2">
+<h2 class="anchored" data-anchor-id="level-5b-one-copy-on-a-server">Level 5b: One copy on a server</h2>
+<p><strong>The problem.</strong> Option 5a still leaves several copies of the project to keep in sync, and large datasets often already live on the university’s computing cluster rather than on your laptop.</p>
+<p><strong>What you add.</strong> VS Code’s Remote-SSH feature, which opens a folder on the cluster as if it were on your own computer. The AI extension runs on the server, next to the files. Any laptop you connect from sees the same single copy, and the same session history, because the history is stored on the server too.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>laptop ──┐</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>          ├── VS Code Remote-SSH ──▶  cluster: ~/projects/soil-moisture-2026/</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>lab PC ──┘                                (files, data, agent, history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Before you start, check four things:</p>
+<ul>
+<li><strong>Login nodes are not for heavy computing.</strong> Add a rule to <code>AGENTS.md</code> that heavy jobs go through the cluster’s scheduler (often Slurm).</li>
+<li><strong>The server needs internet access</strong> to reach the AI provider. Some clusters block outgoing connections, so ask your IT team.</li>
+<li><strong>Restricted data.</strong> Some clusters hold data that may not be sent to outside services.</li>
+<li><strong>Keep using git.</strong> You no longer need it to sync, but it is still your history and your undo button.</li>
+</ul>
+<p><strong>In the examples.</strong> <em>Data:</em> the agent writes the analysis, submits it as a cluster job over the full multi-year dataset, and plots the results when the job finishes. <em>Grant:</em> less needed. A writing project is small, so option 5a is usually enough.</p>
+<p><strong>Prompt to paste:</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>My university has a computing cluster that I can log into with SSH. I want to work on a research project there through VS Code's Remote-SSH, with my AI agent's extension running on the server. Ask me which AI tool I use and what you need to know about the cluster. Then explain how to connect, how to install the extension on the remote side, and what to check with IT: outgoing internet access, data policies, and the job scheduler. Also suggest rules to add to my standing-instructions file so that you submit heavy jobs to the scheduler instead of running them on the login node.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="at-every-level-trust-but-verify" class="level2">
+<h2 class="anchored" data-anchor-id="at-every-level-trust-but-verify">At every level: trust, but verify</h2>
+<p>The agent is a fast, tireless assistant. The scientific judgment stays with you.</p>
+<ul>
+<li><strong>Give it a target to hit.</strong> Analyses checked against something known (a published result, an existing tool’s output, or simulated data with a known answer) work best. That was the pattern in the strongest projects of <a href="https://openai.com/index/scientific-computing-agentic-ai/">OpenAI’s field report on agent-assisted scientific computing</a>.</li>
+<li><strong>Check citations and numbers yourself.</strong> Agents can be confidently wrong and can attribute a claim to the wrong paper.</li>
+<li><strong>Keep results in files, not in the chat.</strong> A script can be re-run and reviewed. A number that appears only in a chat answer cannot.</li>
+<li><strong>Think before adding sensitive data.</strong> Files the agent reads are sent to the AI provider. Check your university’s policy on personal, medical or confidential data, and the funder’s policy on AI-assisted writing.</li>
+<li><strong>Reproducible isn’t the same as correct.</strong> Git tells you exactly what the agent did; it says nothing about whether the scientific reasoning behind it was sound. An agent can decide, on its own, how to handle missing data, which model to fit, or which outliers to drop — decisions that need your judgment, not just mechanical ones like file naming or formatting. Ask it to flag which kind of decision it’s making.</li>
+<li><strong>Use approval checkpoints for consequential choices.</strong> Let the agent work independently on routine steps, but have it stop and wait before anything that changes the analysis. For example: “Explore three approaches to handling missing observations. Don’t change the original data. Compare the implications and recommend one, but wait for my approval before applying it to the main analysis.”</li>
+</ul>
+<p><strong>Prompt to paste,</strong> at any level, to review a setup:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Here is how I've set up my research project for working with an AI agent: [paste your folder structure and standing-instructions file]. Explain what each part does and point out anything missing, risky or unclear. Then suggest the single most useful improvement.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li><a href="https://openai.com/index/scientific-computing-agentic-ai/">OpenAI: Scientific computing in the age of agentic AI</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/yairmau\.com\/share\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

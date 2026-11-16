@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*-- scss:defaults --*/
+
+// Midnight palette, shared with yairmau.com
+$primary: #0d1f2d;
+$link-color: #0071eb;
+$body-color: #1e2a33;
+$navbar-bg: #0d1f2d;
+$navbar-fg: #ffffff;
+$code-block-bg: #1e2a33;
+
+$font-size-base: 1.125rem;
+$line-height-base: 1.6;
+
+/*-- scss:rules --*/
+
+// Buttons
+.btn {
+  font-size: 90%;
+}
+
+// Links
+a {
+  text-decoration: none;
+}
+
+// Thin underlines on links inside running text, so they don't rely on color alone
+#quarto-document-content :is(p, li) a:not(.btn) {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba($link-color, 0.4);
+  text-underline-offset: 2px;
+
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+// Headers
+h1, h2, h3, h4, h5{
+  font-weight: bold;
+}
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+  line-height: $line-height-base;
+}
+
+// Article rhythm; small UI text and captions retain the theme's own sizing.
+main.content > p,
+main.content section > p {
+  margin-bottom: 1.25em;
+}
+
+main.content h2 {
+  margin-top: 2.25rem;
+}
+
+main.content h3 {
+  margin-top: 1.75rem;
+}
+
+main.content figure {
+  margin-block: 2rem;
+}
+
+main.content .math.display {
+  display: block;
+  overflow-x: auto;
+  margin-block: 1.5rem;
+}
+
+// Keep article links easy to recognize without underlining listing rows.
+main.content p a:not(.no-external):not(.quarto-title-anchor),
+main.content li a:not(.no-external):not(.quarto-title-anchor) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.blog-intro {
+  margin-block: 1rem 2.5rem;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-tagline {
+    color: $text-muted;
+    font-size: 0.85rem;
+  }
+}
+
+// Let the title and excerpt lead, with the date and categories secondary.
+.quarto-listing-default {
+  .quarto-post {
+    padding-block: 1.5rem;
+  }
+
+  .listing-date,
+  .listing-category {
+    color: $text-muted;
+  }
+
+  .listing-description {
+    line-height: 1.5;
+  }
+
+  .thumbnail img {
+    object-fit: contain;
+  }
+}
+
+// Cap any listing thumbnail at 300px tall, scaling the whole image down
+// (never cropping it) so a tall or wide source image can't blow up a card.
+.quarto-listing .card-img-top,
+.quarto-listing .listing-item-img-placeholder,
+.quarto-listing-default .thumbnail {
+  max-height: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quarto-listing .card-img-top img,
+.quarto-listing .thumbnail-image,
+.quarto-listing-default .thumbnail img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+// Code font
+pre code{
+  font-family:
+    "Ubuntu Mono";
+  font-size: 1.1*$font-size-base;
+}
+
+// Wrap long lines in prompt/text code blocks instead of cutting them off
+// at the box edge or forcing a horizontal scrollbar.
+pre.sourceCode > code.sourceCode {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+code {
+  font-family:
+    "Ubuntu Mono";
+  font-size: 1.1*$font-size-base;
+}
+
+// Navigation bar
+.navbar{
+  font-weight: bold;
+  font-size: 110%;
+}
+/* make navbar of the same width and website ::content */
+/* https://www.ddanieltan.com/posts/blogtips/ */
+.navbar > .container-xxl, .navbar > .container-xl, .navbar > .container-lg, .navbar > .container-md, .navbar > .container-sm, .navbar > .container, .navbar > .container-fluid {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.collapse {
+  background-color: $navbar-bg;
+}
+
+// Post header: title, description and byline/date
+#title-block-header.quarto-title-block {
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+#title-block-header .quarto-title > .title {
+  margin-bottom: 1.5rem;
+}
+
+#title-block-header > .description {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: $text-muted;
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+#title-block-header .quarto-title-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.4em;
+  margin-top: 0;
+  font-size: 0.95rem;
+  color: $text-muted;
+}
+
+#title-block-header .quarto-title-meta-heading {
+  display: none;
+}
+
+#title-block-header .quarto-title-meta > div {
+  display: inline-flex;
+}
+
+#title-block-header .quarto-title-meta-contents p {
+  display: inline;
+  margin: 0;
+}
+
+#title-block-header .quarto-title-meta > div:not(:last-child)::after {
+  content: "\00a0\00b7";
+}
